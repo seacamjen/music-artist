@@ -47,4 +47,18 @@ public class GenreTest {
     Genre secondGenre = new Genre("No-chill");
     assertEquals(secondGenre, Genre.find(secondGenre.getId()));
   }
+
+  @Test
+  public void getArtist_initiallyReturnsEmptyList_ArrayList() {
+    Genre testGenre = new Genre("Chill");
+    assertEquals(0, testGenre.getArtists().size());
+  }
+
+  @Test
+  public void addArtist_addsArtistToList_true() {
+    Genre testGenre = new Genre("Chill");
+    Artist testArtist = new Artist("The Beats");
+    testGenre.addArtist(testArtist);
+    assertTrue(testGenre.getArtists().contains(testArtist));
+  }
 }

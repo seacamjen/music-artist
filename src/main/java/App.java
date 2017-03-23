@@ -17,9 +17,23 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+    get("/genres/new", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      model.put("template", "templates/genre-new-form.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
     get("/artists/new", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       model.put("template", "templates/artist-new-form.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/genres", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      String type = request.queryParams("type");
+      Genre newGenre = new Genre(type);
+      model.put("template", "templates/genres-success.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
