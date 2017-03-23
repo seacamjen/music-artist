@@ -43,6 +43,10 @@ public class App {
     get("/artists", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       // model.put("names", request.session().attribute("names"));
+
+      // if (Artist.all().size()!=0){
+      //     model.put("artists", Artist.all());
+      // } This is an option for if statement in all-artists.vtl
       model.put("artists", Artist.all());
       model.put("template", "templates/all-artists.vtl");
       return new ModelAndView(model, layout);

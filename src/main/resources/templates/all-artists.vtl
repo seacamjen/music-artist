@@ -1,7 +1,7 @@
 <!-- all-artist.vtl -->
 <h3>Artist Names:</h3>
 <br>
-#if ($artists)
+#if ($artists.size() > 0 )
   <ul>
     #foreach ($artist in $artists)
       <li><a href="/artists/$artist.getId()">$artist.getName()</a></li>
