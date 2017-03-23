@@ -23,9 +23,11 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    get("/artists/new", (request, response) -> {
+    get("/genres/:id/artists/new", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
-      model.put("template", "templates/artist-new-form.vtl");
+      Genre genre = Genre.find(Integer.parseInt(request.params(":id")));
+      model.put("type", genre);
+      model.put("template", "templates/genre-artist-new-form.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
@@ -37,7 +39,7 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    post("/artists", (request, response) -> {
+    post("/genres/:id/artists", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
 
       // ArrayList<Artist> artists = request.session().attribute("names");
@@ -54,6 +56,13 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+    get("/genres", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      model.put("genres", Genre.all());
+      model.put("template", "templates/all-genres.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
     get("/artists", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       // model.put("names", request.session().attribute("names"));
@@ -63,6 +72,14 @@ public class App {
       // } This is an option for if statement in all-artists.vtl
       model.put("artists", Artist.all());
       model.put("template", "templates/all-artists.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    get("/genres/:id", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      Genre genre = Genre.find(Integer.parseInt(request.params(":id")));
+      model.put("type", genre);
+      model.put("template", "templates/genre.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 

@@ -1,0 +1,18 @@
+<!-- all-genres.vtl -->
+<h3>Genre Names:</h3>
+<br>
+#if ($genres.size() > 0 )
+  <ul>
+    #foreach ($genre in $genres)
+      <li><a href="/genres/$genre.getId()">$genre.getType()</a></li>
+    #end
+  </ul>
+#else
+  <p>No Genres</p>
+#end
+
+<br>
+<a href="/">Go back Home</a>
+<br>
+<a href="/genres/new">Add another Genre</a>
+<!-- all-genres.vtl -->

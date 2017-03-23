@@ -1,0 +1,11 @@
+<!--genre-artist-new-form.vtl-->
+<h2>Enter a New Artist to $type.getType()</h2>
+
+<form action="/genres/$type.getId()/artists" method="post">
+  <label for="name">Artist Name</label>
+  <input type="text" name="name" id="name">
+  <button type="submit" class="btn btn-info">Add Artist</button>
+</form>
+<br>
+<a href="/">Get Home!</a>
+<!--genre-artist-new-form.vtl-->
