@@ -1,0 +1,18 @@
+<!-- all-artist.vtl -->
+<h3>Artist Names:</h3>
+<br>
+#if ($artists)
+  <ul>
+    #foreach ($artist in $artists)
+      <li><a href="/artists/$artist.getId()">$artist.getName()</a></li>
+    #end
+  </ul>
+#else
+  <p>No Artists</p>
+#end
+
+<br>
+<a href="/">Go back Home</a>
+<br>
+<a href="/artists/new">Add another Artist</a>
+<!-- all-artist.vtl -->
