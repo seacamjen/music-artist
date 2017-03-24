@@ -41,17 +41,10 @@ public class App {
 
     post("/genres/:id/artists", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
-
-      // ArrayList<Artist> artists = request.session().attribute("names");
-      // if (artists == null) {
-      //   artists = new ArrayList<Artist>();
-      //   request.session().attribute("names", artists);
-      // }
-
+      Genre genre = Genre.find(Integer.parseInt(request.params(":id")));
+      model.put("type", genre);
       String name = request.queryParams("name");
       Artist newArtist = new Artist(name);
-      // artists.add(newArtist);
-
       model.put("template", "templates/artist-success.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
@@ -65,7 +58,10 @@ public class App {
 
     get("/genres/:id/artists", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
-      // model.put("names", request.session().attribute("names"));
+      Genre genre = Genre.find(Integer.parseInt(request.params(":id")));
+      // Artist artist = Artist.find(Integer.parseInt(request.params(":id1")));
+      model.put("type", genre);
+      // model.put("name", artist);
 
       // if (Artist.all().size()!=0){
       //     model.put("artists", Artist.all());

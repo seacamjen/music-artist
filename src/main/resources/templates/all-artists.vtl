@@ -1,10 +1,10 @@
 <!-- all-artist.vtl -->
-<h3>$type.getId() Artist Names:</h3>
+<h3>$type.getType() Artist Names:</h3>
 <br>
 #if ($artists.size() > 0 )
   <ul>
     #foreach ($artist in $artists)
-      <li><a href="/artists/$artist.getId()">$artist.getName()</a></li>
+      <li><a href="/genres/$type.getId()/artists/$artist.getId()">$artist.getName()</a></li>
     #end
   </ul>
 #else
