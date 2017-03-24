@@ -63,7 +63,7 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    get("/artists", (request, response) -> {
+    get("/genres/:id/artists", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       // model.put("names", request.session().attribute("names"));
 
@@ -83,9 +83,11 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    get("/artists/:id", (request, response) -> {
+    get("genres/:id/artists/:id1", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
-      Artist artist = Artist.find(Integer.parseInt(request.params(":id")));
+      Genre genre = Genre.find(Integer.parseInt(request.params(":id")));
+      Artist artist = Artist.find(Integer.parseInt(request.params(":id1")));
+      model.put("type", genre);
       model.put("name", artist);
       model.put("template", "templates/artist.vtl");
       return new ModelAndView(model, layout);

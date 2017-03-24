@@ -1,5 +1,5 @@
 <!-- all-artist.vtl -->
-<h3>Artist Names:</h3>
+<h3>$type.getId() Artist Names:</h3>
 <br>
 #if ($artists.size() > 0 )
   <ul>
@@ -14,5 +14,5 @@
 <br>
 <a href="/">Go back Home</a>
 <br>
-<a href="/artists/new">Add another Artist</a>
+<a href="/genres/$type.getId()/artists/new">Add another Artist</a>
 <!-- all-artist.vtl -->
